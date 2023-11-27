@@ -1,6 +1,7 @@
-FROM Centos:latest
-RUN yum-y install httpd
-COPY index.html /var/www/html/
-CMD ["/usr/sbin/httpd","-D", "FOREGROUND"]
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install apache2 -y
+ADD . /var/www/html/
+ENTRYPOINT apachectl -D FOREGROUND 
 EXPOSE 80
 
